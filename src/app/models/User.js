@@ -10,18 +10,9 @@ module.exports = (sequelize, DataTypes) => {
         password:DataTypes.VIRTUAL,
         password_hash: DataTypes.STRING,
         city_id:DataTypes.INTEGER,
-        description:DataTypes.STRING,
-        min_order_price:DataTypes.INTEGER,
-        delivery_price:DataTypes.INTEGER,
-        min_delivery_minutes:DataTypes.INTEGER,
-        max_delivery_minutes:DataTypes.INTEGER,
-        status:DataTypes.STRING,
-        banner:DataTypes.STRING,
         phone:DataTypes.STRING,
         address:DataTypes.STRING,
-        delivery_option:DataTypes.STRING,
-        logo:DataTypes.STRING,
-        rating:DataTypes.STRING,
+     
     },{
         hooks:{
             beforeSave: async user =>{
