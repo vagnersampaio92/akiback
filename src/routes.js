@@ -9,7 +9,7 @@ const SessionControllerAPP = require ('./controllers/SessionControllerAPP')
 const CidadesController = require('./controllers/CidadesController')
 const UsuarioenderecoController = require('./controllers/UsuarioenderecoController')
 const EntregaController = require('./controllers/EntregaController')
-
+const EntregaempresaController = require('./controllers/EntregaempresaController')
 
 
 const auth = require('../src/app/middlewares/auth')
@@ -19,6 +19,9 @@ const routes = express.Router();
 //entrega controller
 
 routes.post('/entrega', EntregaController.store);
+routes.post('/entregador', EntregaempresaController.store);
+routes.post('/ultimo', EntregaempresaController.ultimo);
+routes.post('/andamento', EntregaempresaController.andamento);
 
 
 //empresa
