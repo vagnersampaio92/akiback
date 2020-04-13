@@ -22,6 +22,7 @@ routes.post('/entrega', EntregaController.store);
 routes.post('/entregador', EntregaempresaController.store);
 routes.post('/ultimo', EntregaempresaController.ultimo);
 routes.post('/andamento', EntregaempresaController.andamento);
+routes.post('/historico', EntregaempresaController.historico);
 
 
 //empresa
