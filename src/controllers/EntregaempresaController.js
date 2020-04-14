@@ -110,7 +110,12 @@ class EntregaempresaController {
             where: {
                 entregador_id: req.body.id,
                 status_entrega: {
-                    [Op.ne]: "concluido"
+                    // [Op.ne]:[{ "concluido" }, {"aceito"}]
+                    [Op.and]:[
+                        {[Op.ne]:"concluido"} ,
+                        {[Op.ne]:"aceito" }
+                ]
+                   
                 }
 
             }
@@ -121,6 +126,7 @@ class EntregaempresaController {
            const data2={}
             data2.endereco = ent[x].endereco
             data2.valor = ent[x].valor
+            data2.id=ent[x].id
             data2.status_entrega = ent[x].status_entrega
             const entre=await Usuario.findOne({
             where: {
@@ -140,7 +146,32 @@ class EntregaempresaController {
         res.json(data);
     }
 
+    async aceito(req, res) {
+        console.log(req.body.id)
+        
+        const ent = await entrega.update(
+            {status_entrega:"aceito"},
+            {where: {
+                id: req.body.id,
+               
 
+            }})
+
+        res.json(ent);
+    }
+    async concluido(req, res) {
+        console.log(req.body.id)
+        
+        const ent = await entrega.update(
+            {status_entrega:"concluido"},
+            {where: {
+                id: req.body.id,
+               
+
+            }})
+
+        res.json(ent);
+    }
 
 
 }

@@ -24,6 +24,8 @@ routes.post('/ultimo', EntregaempresaController.ultimo);
 routes.post('/andamento', EntregaempresaController.andamento);
 routes.post('/historico', EntregaempresaController.historico);
 routes.post('/empresaentrega', EntregaempresaController.entrega);
+routes.post('/aceito', EntregaempresaController.aceito);
+routes.post('/concluido', EntregaempresaController.concluido);
 
 //empresa
 routes.post('/loginapp',SessionControllerAPP.store)
