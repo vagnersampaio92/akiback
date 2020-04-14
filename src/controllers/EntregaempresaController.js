@@ -173,6 +173,85 @@ class EntregaempresaController {
         res.json(ent);
     }
 
+    async entregaandamento(req, res) {
+        console.log(req.body.id)
+        const data = {}
+        data.pedidos=[]
+        const ent = await entrega.findAll({
+            where: {
+                entregador_id: req.body.id,
+                status_entrega:"aceito"
+
+            }
+
+        })
+        console.log(ent)
+        for (let x = 0; x < ent.length; x++) {
+           const data2={}
+            data2.endereco = ent[x].endereco
+            data2.valor = ent[x].valor
+            data2.id=ent[x].id
+            data2.status_entrega = ent[x].status_entrega
+            const entre=await Usuario.findOne({
+            where: {
+                id:ent[x].empresa_id
+              }
+
+          })
+          data2.empresa=entre.name
+          data2.phone=entre.phone
+          data2.address=entre.address
+          data.pedidos=data.pedidos.concat(data2)
+        //   console.log(data)
+
+        }
+
+
+        res.json(data);
+    }
+
+    async historicoentregador(req, res) {
+        console.log(req.body.id)
+        const data = {}
+        data.pedidos=[]
+        const ent = await entrega.findAll({
+            where: {
+                entregador_id: req.body.id,
+           
+
+            }
+
+        })
+
+        for (let x = 0; x < ent.length; x++) {
+           const data2={}
+            data2.endereco = ent[x].endereco
+            data2.valor = ent[x].valor
+            data2.status_entrega = ent[x].status_entrega
+            const entre=await Usuario.findOne({
+            where: {
+                id:ent[x].empresa_id
+              }
+
+          })
+          data2.empresa=entre.name
+        
+          data2.ano=ent[x].createdAt.getFullYear()
+          data2.mes=ent[x].createdAt.getMonth()
+          data2.dia=ent[x].createdAt.getDate()
+          data2.hora=ent[x].createdAt.getHours()
+          data2.minuto=ent[x].createdAt.getMinutes()
+
+          data2.status_pagamento_empresa=ent[x].status_pagamento_empresa
+          data.pedidos=data.pedidos.concat(data2)
+          console.log(data)
+
+        }
+        
+
+
+        res.json(data);
+    }
 
 }
 

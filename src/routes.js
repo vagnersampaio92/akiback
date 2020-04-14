@@ -26,6 +26,10 @@ routes.post('/historico', EntregaempresaController.historico);
 routes.post('/empresaentrega', EntregaempresaController.entrega);
 routes.post('/aceito', EntregaempresaController.aceito);
 routes.post('/concluido', EntregaempresaController.concluido);
+routes.post('/entregaandamento', EntregaempresaController.entregaandamento);
+routes.post('/historicoentregador', EntregaempresaController.historicoentregador);
+
+
 
 //empresa
 routes.post('/loginapp',SessionControllerAPP.store)
