@@ -252,6 +252,24 @@ class EntregaempresaController {
 
         res.json(data);
     }
+    async listaempresa(req, res) {
+        const ent = await Usuario.findAll({
+      
+
+        })
+      
+
+        res.json(ent );
+    }    
+    async listaentregador(req, res) {
+        const ent = await User.findAll({
+      
+
+        })
+      
+
+        res.json(ent );
+    }  
 
 }
 

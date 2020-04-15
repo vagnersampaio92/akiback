@@ -28,6 +28,8 @@ routes.post('/aceito', EntregaempresaController.aceito);
 routes.post('/concluido', EntregaempresaController.concluido);
 routes.post('/entregaandamento', EntregaempresaController.entregaandamento);
 routes.post('/historicoentregador', EntregaempresaController.historicoentregador);
+routes.get('/listaempresa', EntregaempresaController.listaempresa);
+routes.get('/listaentregador', EntregaempresaController.listaentregador);
 
 
 
