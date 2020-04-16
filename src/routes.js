@@ -30,6 +30,10 @@ routes.post('/entregaandamento', EntregaempresaController.entregaandamento);
 routes.post('/historicoentregador', EntregaempresaController.historicoentregador);
 routes.get('/listaempresa', EntregaempresaController.listaempresa);
 routes.get('/listaentregador', EntregaempresaController.listaentregador);
+routes.get('/listapagamentospedentes',EntregaempresaController.listapagamentospedentes)
+routes.get('/listapagamentoentregadorpendente', EntregaempresaController.listapagamentoentregadorpendente)
+routes.post('/concluidopagamentoentregador', EntregaempresaController.concluidopagamentoentregador);
+routes.post('/concluidopagamentoempresa', EntregaempresaController.concluidopagamentoempresa);
 
 
 

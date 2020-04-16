@@ -270,6 +270,64 @@ class EntregaempresaController {
 
         res.json(ent );
     }  
+    async listapagamentospedentes(req, res) {
+        const ent = await entrega.findAll({
+      
+            where: {
+               
+                status_pagamento_empresa: {
+                    [Op.ne]: "concluido"
+                }
+
+            }
+        })
+      
+
+        res.json(ent );
+    }  
+    async listapagamentoentregadorpendente(req, res) {
+        const ent = await entrega.findAll({
+      
+            where: {
+               
+                status_pagamento_entregador: {
+                    [Op.ne]: "concluido"
+                }
+
+            }
+        })
+      
+
+        res.json(ent );
+    } 
+    async concluidopagamentoempresa(req, res) {
+        console.log(req.body.id)
+        
+        const ent = await entrega.update(
+            {status_pagamento_empresa:"concluido"},
+            {where: {
+                id: req.body.id,
+               
+
+            }})
+
+        res.json(ent);
+    }
+  
+    async concluidopagamentoentregador(req, res) {
+        console.log(req.body.id)
+        
+        const ent = await entrega.update(
+            {status_pagamento_entregador:"concluido"},
+            {where: {
+                id: req.body.id,
+               
+
+            }})
+
+        res.json(ent);
+    }
+   
 
 }
 
