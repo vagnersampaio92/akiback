@@ -9,6 +9,12 @@ module.exports = (sequelize, DataTypes) => {
         email:DataTypes.STRING,
         phone:DataTypes.STRING,
         address:DataTypes.STRING,
+        razao:DataTypes.STRING,
+        cnpj:DataTypes.STRING,
+        iestaduall:DataTypes.STRING,
+        contatoresponsavel:DataTypes.STRING,
+        telefoneresponsavel:DataTypes.STRING,
+        filial:DataTypes.STRING,
         password:DataTypes.VIRTUAL,
         password_hash: DataTypes.STRING
 

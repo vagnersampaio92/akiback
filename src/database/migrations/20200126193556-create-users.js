@@ -17,7 +17,30 @@ module.exports = {
         allownull:false,
         type: Sequelize.STRING
       },
-    
+      rg:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      cnh:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      cpf:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      bairropreferido:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      cnpj:{
+        allownull:false,
+        type: Sequelize.STRING
+      }, 
+      inscricaiestadual:{
+        allownull:false,
+        type: Sequelize.STRING
+      },   
       phone:{
         allownull:false,
         type: Sequelize.STRING

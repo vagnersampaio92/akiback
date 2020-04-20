@@ -25,6 +25,30 @@ module.exports = {
         allownull:false,
         type: Sequelize.STRING
       },
+      razao:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      cnpj:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      iestaduall:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      contatoresponsavel:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      telefoneresponsavel:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      filial:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
       password_hash:{
         allownull:false,
         type: Sequelize.STRING

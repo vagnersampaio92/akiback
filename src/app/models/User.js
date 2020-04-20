@@ -12,6 +12,12 @@ module.exports = (sequelize, DataTypes) => {
         city_id:DataTypes.INTEGER,
         phone:DataTypes.STRING,
         address:DataTypes.STRING,
+        rg:DataTypes.STRING,
+        cnh:DataTypes.STRING,
+        cpf:DataTypes.STRING,
+        bairropreferido:DataTypes.STRING,
+        cnpj:DataTypes.STRING,
+        inscricaiestadual:DataTypes.STRING
      
     },{
         hooks:{
