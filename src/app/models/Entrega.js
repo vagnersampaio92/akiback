@@ -4,6 +4,13 @@ module.exports = (sequelize, DataTypes) => {
     empresa_id: DataTypes.INTEGER,
     endereco:DataTypes.STRING,
     valor:DataTypes.STRING,
+    nome:DataTypes.STRING,
+    telefone:DataTypes.STRING,
+    forma:DataTypes.STRING,
+    cep:DataTypes.STRING,
+    obs:DataTypes.STRING,
+    tamanho:DataTypes.STRING,
+    maquina:DataTypes.STRING,
     status_entrega:DataTypes.STRING,
     status_pagamento_entregador:DataTypes.STRING,
     status_pagamento_empresa:DataTypes.STRING

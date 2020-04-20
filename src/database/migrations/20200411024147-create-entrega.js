@@ -18,6 +18,34 @@ module.exports = {
         allownull:false,
         type: Sequelize.STRING
       },
+      nome:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      telefone:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      cep:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      obs:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      valor:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      tamanho:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
+      maquina:{
+        allownull:false,
+        type: Sequelize.STRING
+      },
       status_entrega:{
         allownull:false,
         type: Sequelize.STRING
