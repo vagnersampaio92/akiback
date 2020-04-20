@@ -34,7 +34,7 @@ routes.get('/listapagamentospedentes',EntregaempresaController.listapagamentospe
 routes.get('/listapagamentoentregadorpendente', EntregaempresaController.listapagamentoentregadorpendente)
 routes.post('/concluidopagamentoentregador', EntregaempresaController.concluidopagamentoentregador);
 routes.post('/concluidopagamentoempresa', EntregaempresaController.concluidopagamentoempresa);
-
+routes.get('/associacao', EntregaempresaController.associacao)
 
 
 //empresa

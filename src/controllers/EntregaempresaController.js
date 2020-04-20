@@ -313,7 +313,6 @@ class EntregaempresaController {
 
         res.json(ent);
     }
-  
     async concluidopagamentoentregador(req, res) {
         console.log(req.body.id)
         
@@ -328,6 +327,38 @@ class EntregaempresaController {
         res.json(ent);
     }
    
+    async associacao(req, res) {
+        
+        const empresa= await Usuario.findAll({
+          
+        })
+        const data = {}
+        data.lista=[]
+        for(let x=0; x<empresa.length; x++){
+            const data2={}
+            const ent = await entregaempresa.findAll({
+                where: {
+                    empresa_id: empresa[x].id
+                }
+    
+            })
+        
+           const idultimo = ent[ent.length - 1].entrega_id
+            const nome = await User.findOne({
+                where: {
+                    id: idultimo
+                }
+    
+            })
+
+            data2.empresa=empresa[x].name
+            data2.entrega=nome.name;
+            data.lista=data.lista.concat(data2)
+        }
+
+       
+        res.json(data);
+    }
 
 }
 
