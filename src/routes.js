@@ -35,6 +35,15 @@ routes.get('/listapagamentoentregadorpendente', EntregaempresaController.listapa
 routes.post('/concluidopagamentoentregador', EntregaempresaController.concluidopagamentoentregador);
 routes.post('/concluidopagamentoempresa', EntregaempresaController.concluidopagamentoempresa);
 routes.get('/associacao', EntregaempresaController.associacao)
+routes.post('/ordenadata7', EntregaempresaController.ordenadata7)
+routes.post('/ordenadata15', EntregaempresaController.ordenadata15)
+routes.post('/ordenadata30', EntregaempresaController.ordenadata30)
+routes.post('/ordenadata7entrega', EntregaempresaController.ordenadata7entrega)
+routes.post('/ordenadata15entrega', EntregaempresaController.ordenadata15entrega)
+routes.post('/ordenadata30entrega', EntregaempresaController.ordenadata30entrega)
+routes.post('/listaconcluidopagamentoempresa', EntregaempresaController.listaconcluidopagamentoempresa)
+routes.post('/listaconcluidopagamentoentregador', EntregaempresaController.listaconcluidopagamentoentregador)
+
 
 
 //empresa

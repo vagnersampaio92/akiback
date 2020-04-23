@@ -1,5 +1,5 @@
 const { entregaempresa, entrega, User, Usuario } = require('../app/models')
-const { Sequelize } = require('sequelize')
+const  Sequelize  = require('sequelize')
 const Op = Sequelize.Op;
 
 class EntregaempresaController {
@@ -59,7 +59,6 @@ class EntregaempresaController {
 
         res.json(data);
     }
-
     async historico(req, res) {
         console.log(req.body.id)
         const data = {}
@@ -101,7 +100,6 @@ class EntregaempresaController {
 
         res.json(data);
     }
-
     async entrega(req, res) {
         console.log(req.body.id)
         const data = {}
@@ -145,7 +143,6 @@ class EntregaempresaController {
 
         res.json(data);
     }
-
     async aceito(req, res) {
         console.log(req.body.id)
         
@@ -172,7 +169,6 @@ class EntregaempresaController {
 
         res.json(ent);
     }
-
     async entregaandamento(req, res) {
         console.log(req.body.id)
         const data = {}
@@ -209,7 +205,6 @@ class EntregaempresaController {
 
         res.json(data);
     }
-
     async historicoentregador(req, res) {
         console.log(req.body.id)
         const data = {}
@@ -326,7 +321,6 @@ class EntregaempresaController {
 
         res.json(ent);
     }
-   
     async associacao(req, res) {
         
         const empresa= await Usuario.findAll({
@@ -359,6 +353,170 @@ class EntregaempresaController {
        
         res.json(data);
     }
+    async ordenadata7(req, res){
+        const ent = await entrega.findAll({
+      
+            where: {
+                empresa_id: req.body.id,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`created_at > NOW() - INTERVAL '168h'`),
+                  ],
+                status_pagamento_empresa: {
+                    
+                    [Op.ne]: "concluido"
+                }
+
+            },
+            order:[['created_at', 'DESC']]
+        })
+
+        // const d = sequelize.literal('CURRENT_TIMESTAMP')
+      
+        // console.log(d)
+        res.json(ent );;
+    }
+    async ordenadata15(req, res){
+        const ent = await entrega.findAll({
+      
+            where: {
+                empresa_id: req.body.id,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`created_at > NOW() - INTERVAL '360h'`),
+                  ],
+                status_pagamento_empresa: {
+                    
+                    [Op.ne]: "concluido"
+                }
+
+            },
+            order:[['created_at', 'DESC']]
+        })
+
+        // const d = sequelize.literal('CURRENT_TIMESTAMP')
+      
+        // console.log(d)
+        res.json(ent );;
+    }
+    async ordenadata30(req, res){
+        const ent = await entrega.findAll({
+      
+            where: {
+                empresa_id: req.body.id,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`created_at > NOW() - INTERVAL '720h'`),
+                  ],
+                status_pagamento_empresa: {
+                    
+                    [Op.ne]: "concluido"
+                }
+
+            },
+            order:[['created_at', 'DESC']]
+        })
+
+        // const d = sequelize.literal('CURRENT_TIMESTAMP')
+      
+        // console.log(d)
+        res.json(ent );;
+    }
+    async ordenadata7entrega(req, res){
+        const ent = await entrega.findAll({
+      
+            where: {
+                entregador_id: req.body.id,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`created_at > NOW() - INTERVAL '168h'`),
+                  ],
+                status_pagamento_entregador: {
+                    
+                    [Op.ne]: "concluido"
+                }
+
+            },
+            order:[['created_at', 'DESC']]
+        })
+
+        // const d = sequelize.literal('CURRENT_TIMESTAMP')
+      
+        // console.log(d)
+        res.json(ent );;
+    }
+    async ordenadata15entrega(req, res){
+        const ent = await entrega.findAll({
+      
+            where: {
+                entregador_id: req.body.id,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`created_at > NOW() - INTERVAL '360h'`),
+                  ],
+                  status_pagamento_entregador: {
+                    
+                    [Op.ne]: "concluido"
+                }
+
+            },
+            order:[['created_at', 'DESC']]
+        })
+
+        // const d = sequelize.literal('CURRENT_TIMESTAMP')
+      
+        // console.log(d)
+        res.json(ent );;
+    }
+    async ordenadata30entrega(req, res){
+        const ent = await entrega.findAll({
+      
+            where: {
+                entregador_id: req.body.id,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`created_at > NOW() - INTERVAL '720h'`),
+                  ],
+                  status_pagamento_entregador: {
+                    
+                    [Op.ne]: "concluido"
+                }
+
+            },
+            order:[['created_at', 'DESC']]
+        })
+
+        // const d = sequelize.literal('CURRENT_TIMESTAMP')
+      
+        // console.log(d)
+        res.json(ent );;
+    }
+    async listaconcluidopagamentoempresa(req, res) {
+        
+        
+        for(let x=0; x<req.body.data.length; x++){
+            console.log(req.body.data[x].id)
+
+        const ent = await entrega.update(
+            {status_pagamento_empresa:"concluido"},
+            {where: {
+                id:req.body.data[x].id
+               
+
+            }})
+        }
+
+    }
+    async listaconcluidopagamentoentregador(req, res) {
+
+        for(let x=0; x<req.body.data.length; x++){
+            console.log(req.body.data[x].id)
+
+        const ent = await entrega.update(
+            {status_pagamento_entregador:"concluido"},
+            {where: {
+                id:req.body.data[x].id
+               
+
+            }})
+        }
+
+    }
+
 
 }
 
