@@ -419,6 +419,25 @@ class EntregaempresaController {
         // console.log(d)
         res.json(ent );;
     }
+    async ordenadatatodos(req, res){
+        const ent = await entrega.findAll({
+      
+            where: {
+                empresa_id: req.body.id,
+                status_pagamento_empresa: {
+                    
+                    [Op.ne]: "concluido"
+                }
+
+            },
+            order:[['created_at', 'DESC']]
+        })
+
+        // const d = sequelize.literal('CURRENT_TIMESTAMP')
+      
+        // console.log(d)
+        res.json(ent );;
+    }
     async ordenadata7entrega(req, res){
         const ent = await entrega.findAll({
       
@@ -485,6 +504,25 @@ class EntregaempresaController {
         // console.log(d)
         res.json(ent );;
     }
+    async ordenadatatodosentrega(req, res){
+        const ent = await entrega.findAll({
+      
+            where: {
+                entregador_id: req.body.id,
+                  status_pagamento_entregador: {
+                    
+                    [Op.ne]: "concluido"
+                }
+
+            },
+            order:[['created_at', 'DESC']]
+        })
+
+        // const d = sequelize.literal('CURRENT_TIMESTAMP')
+      
+        // console.log(d)
+        res.json(ent );;
+    }
     async listaconcluidopagamentoempresa(req, res) {
         
         
@@ -516,6 +554,7 @@ class EntregaempresaController {
         }
 
     }
+    
 
 
 }
