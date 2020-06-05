@@ -45,6 +45,7 @@ routes.post('/ordenadata30entrega', EntregaempresaController.ordenadata30entrega
 routes.post('/ordenadatatodosentrega', EntregaempresaController.ordenadatatodosentrega)
 routes.post('/listaconcluidopagamentoempresa', EntregaempresaController.listaconcluidopagamentoempresa)
 routes.post('/listaconcluidopagamentoentregador', EntregaempresaController.listaconcluidopagamentoentregador)
+routes.post('/fechamento', EntregaempresaController.fechamento)
 
 
 

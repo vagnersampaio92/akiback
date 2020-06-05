@@ -554,7 +554,108 @@ class EntregaempresaController {
         }
 
     }
+    async fechamento(req, res){
+        const {empresa}=req.body
+        let data={}
+        const now = new Date
+        data.data=( now.getDay() + "/" + now.getMonth() + "/" + now.getFullYear() )
+        const empre = await Usuario.findOne({
+            attributes: {  exclude: ['password_hash']},
+            where: {
+                id: empresa
+            }
+
+        })
+        data.dados={}
+        data.dados=empre
+        const entregadorempresa= await entregaempresa.findOne({
+
+            where: {
+                empresa_id: empresa
+            }
+
+        })
+        const entregador = await User.findOne({
+            attributes: {  exclude: ['password_hash']},
+            where: {
+                id: entregadorempresa.dataValues.id
+            }
+
+        })
+
+        data.entregador={}
+        data.entregador=entregador
+        const ent = await entrega.findAll({
+      
+            where: {
+                empresa_id: empresa,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`created_at > NOW() - INTERVAL '10000h'`),
+                  ],
+
+
+            },
+        })
+        data.entrega=ent
+        const ent2 = await entrega.findAll({
+      
+            where: {
+                empresa_id: empresa,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`created_at > NOW() - INTERVAL '10000h'`),
+                  ],
+                  forma: "dinheiro"
     
+
+
+            },
+        })
+      
+        data.quantidadedinheiro=ent2.length
+        data.valordinheiro=0
+        for(let x=0;x<ent2.length;x++){
+     
+            data.valordinheiro=data.valordinheiro+parseFloat(ent2[x].valor)
+        }
+        const ent3 = await entrega.findAll({
+      
+            where: {
+                empresa_id: empresa,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`created_at > NOW() - INTERVAL '10000h'`),
+                  ],
+                  forma: "cartão crédito"
+    
+
+
+            },
+        })
+        data.quantidadecredito=ent3.length
+        data.valorcartaocredito=0
+        for(let x=0;x<ent3.length;x++){
+            data.valorcartaocredito=data.valorcartaocredito+parseFloat(ent3[x].valor)
+        }
+        const ent4 = await entrega.findAll({
+      
+            where: {
+                empresa_id: empresa,
+                [Sequelize.Op.and]: [
+                    Sequelize.literal(`created_at > NOW() - INTERVAL '10000h'`),
+                  ],
+                  forma: "cartão débito"
+    
+
+
+            },
+        })
+        data.quantidadedebito=ent4.length
+        data.valorcartaodebito=0
+        for(let x=0;x<ent4.length;x++){
+            data.valorcartaodebito=data.valorcartaodebito+parseFloat(ent4[x].valor)
+        }
+        
+        res.json(data )
+    }
 
 
 }
