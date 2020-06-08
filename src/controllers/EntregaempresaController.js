@@ -558,7 +558,7 @@ class EntregaempresaController {
         const {empresa}=req.body
         let data={}
         const now = new Date
-        data.data=( now.getDay() + "/" + now.getMonth() + "/" + now.getFullYear() )
+        data.data=(  now.getDate() + "/" + now.getMonth() + "/" + now.getFullYear() )
         const empre = await Usuario.findOne({
             attributes: {  exclude: ['password_hash']},
             where: {
